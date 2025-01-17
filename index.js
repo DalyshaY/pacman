@@ -85,6 +85,20 @@ map.forEach((row, i) => {
 function animate() {
     requestAnimationFrame(animate)
     c.clearRect(0, 0, canvas.width, canvas.height)
+    if (keys.w.pressed && lastKey === 'w') {
+        if 
+        player.velocity.y = -5
+        player.velocity.x = 0
+    } else if (keys.a.pressed && lastKey === 'a') {
+        player.velocity.x = -5
+        player.velocity.y = 0
+    } else if (keys.s.pressed && lastKey === 's') {
+        player.velocity.y = 5
+        player.velocity.x = 0
+    } else if (keys.d.pressed && lastKey === 'd') {
+        player.velocity.x = 5
+        player.velocity.y = 0
+    }
 
     boundaries.forEach((boundary) => {
         boundary.draw()
@@ -104,20 +118,6 @@ function animate() {
 
     player.update()
 
-    // Handle movement logic
-    if (keys.w.pressed && lastKey === 'w') {
-        player.velocity.y = -5
-        player.velocity.x = 0
-    } else if (keys.a.pressed && lastKey === 'a') {
-        player.velocity.x = -5
-        player.velocity.y = 0
-    } else if (keys.s.pressed && lastKey === 's') {
-        player.velocity.y = 5
-        player.velocity.x = 0
-    } else if (keys.d.pressed && lastKey === 'd') {
-        player.velocity.x = 5
-        player.velocity.y = 0
-    }
 }
 
 animate()
