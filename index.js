@@ -62,11 +62,11 @@ const keys = {
 let lastKey = ''
 
 const map = [
-    ['-', '-', '-', '-', '-', '-'],
-    ['-', ' ', ' ', ' ', ' ', '-'],
-    ['-', ' ', '-', '-', ' ', '-'],
-    ['-', ' ', ' ', ' ', ' ', '-'],
-    ['-', '-', '-', '-', '-', '-']
+    ['-', '-', '-', '-', '-', '-','-'],
+    ['-', ' ', ' ', ' ', ' ',' ', '-'],
+    ['-', ' ', '-', ' ', '-',' ', '-'],
+    ['-', ' ', ' ', ' ', ' ',' ', '-'],
+    ['-', '-', '-', '-', '-','-', '-']
 ]
 
 map.forEach((row, i) => {
@@ -89,10 +89,11 @@ function animate() {
     boundaries.forEach((boundary) => {
         boundary.draw()
 
+        // Check for collision
         if (
             player.position.y - player.radius + player.velocity.y <= boundary.position.y + boundary.height &&
-            player.position.y + player.radius + player.velocity.x >= boundary.position.y &&
-            player.position.x + player.radius + player.velocity.y >= boundary.position.x &&
+            player.position.y + player.radius + player.velocity.y >= boundary.position.y &&
+            player.position.x + player.radius + player.velocity.x >= boundary.position.x &&
             player.position.x - player.radius + player.velocity.x <= boundary.position.x + boundary.width
         ) {
             console.log('we are colliding')
@@ -102,17 +103,20 @@ function animate() {
     })
 
     player.update()
-    // player.velocity.y = 0
-    // player.velocity.x = 0
 
+    // Handle movement logic
     if (keys.w.pressed && lastKey === 'w') {
         player.velocity.y = -5
+        player.velocity.x = 0
     } else if (keys.a.pressed && lastKey === 'a') {
         player.velocity.x = -5
+        player.velocity.y = 0
     } else if (keys.s.pressed && lastKey === 's') {
         player.velocity.y = 5
+        player.velocity.x = 0
     } else if (keys.d.pressed && lastKey === 'd') {
         player.velocity.x = 5
+        player.velocity.y = 0
     }
 }
 
@@ -143,15 +147,19 @@ addEventListener('keyup', ({ key }) => {
     switch (key) {
         case 'w':
             keys.w.pressed = false
+            player.velocity.y = 0
             break
         case 'a':
             keys.a.pressed = false
+            player.velocity.x = 0
             break
         case 's':
             keys.s.pressed = false
+            player.velocity.y = 0
             break
         case 'd':
             keys.d.pressed = false
+            player.velocity.x = 0
             break
     }
 })
