@@ -73,6 +73,9 @@ const map = [
     ['-', '-', '-', '-', '-', '-', '-'],
 ]
 
+const image = new Image()
+image.src = './img/pipeHorizontal.png'
+
 map.forEach((row, i) => {
     row.forEach((symbol, j) => {
          switch (symbol) {
