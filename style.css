@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'Emulogic';
+    src: url('.../fonts/Emulogic-zrEw.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'CustomFont', sans-serif;
+    background-color: #000000;
+    text-align: center;
+}
+
+
+
+#pacmanstart {
+    max-width: 90%;
+    
+    height: auto;
+}
+
+
+#simpleButton {
+    background-color: #a3a3a3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+
+}
+
+#simpleButton:hover {
+    background-color: #45a049;
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #pacmanstart {
+        max-width: 80%;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    #pacmanstart {
+        max-width: 70%;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}

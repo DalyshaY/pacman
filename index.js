@@ -291,7 +291,7 @@ map.forEach((row, i) => {
                             x: j * Boundary.width,
                             y: i * Boundary.height
                         },
-                        color: 'blue',
+                        color: 'pink',
                         image: createImage('./img/pipeConnectorTop.png')
                     })
                 )
@@ -303,7 +303,7 @@ map.forEach((row, i) => {
                             x: j * Boundary.width,
                             y: i * Boundary.height
                         },
-                        color: 'blue',
+                        color: 'pink',
                         image: createImage('./img/pipeConnectorRight.png')
                     })
                 )
@@ -315,7 +315,7 @@ map.forEach((row, i) => {
                             x: j * Boundary.width,
                             y: i * Boundary.height
                         },
-                        color: 'blue',
+                        color: 'pink',
                         image: createImage('./img/pipeConnectorBottom.png')
                     })
                 )
