@@ -26,6 +26,7 @@ class Boundary {
 
 class Player {
     constructor({ position, velocity }) {
+
         this.position = position;
         this.velocity = velocity;
         this.radius = 15;
@@ -62,6 +63,7 @@ class Pellet {
     constructor({ position }) {
         this.position = position;
         this.radius = 3;
+
     }
 
     draw() {
@@ -123,6 +125,7 @@ let lastKey = '';
 let score = 0
 
 const map = [
+
     ['1', '-', '-', '-', '-', '-', '-', '-', '-', '-', '2'],
     ['|', '.', '.', '.', '.', '.', '.', '.', '.', '.', '|'],
     ['|', '.', 'b', '.', '[', '7', ']', '.', 'b', '.', '|'],
@@ -136,6 +139,7 @@ const map = [
     ['|', '.', 'b', '.', '[', '5', ']', '.', 'b', '.', '|'],
     ['|', '.', '.', '.', '.', '.', '.', '.', '.', 'p', '|'],
     ['4', '-', '-', '-', '-', '-', '-', '-', '-', '-', '3']
+
 ]
 
 function createImage(src) {
@@ -148,6 +152,7 @@ map.forEach((row, i) => {
     row.forEach((symbol, j) => {
         switch (symbol) {
             case '-':
+
                 boundaries.push(
                     new Boundary({
                         position: {
@@ -344,11 +349,13 @@ map.forEach((row, i) => {
                             y: i * Boundary.height + Boundary.height / 2
                         }
                     })
+
                 )
                 break
         }
     })
 })
+
 
 
 function circleCollidesWithRectangle({ circle, rectangle }) {
@@ -358,6 +365,7 @@ function circleCollidesWithRectangle({ circle, rectangle }) {
         circle.position.x + circle.radius + circle.velocity.x >= rectangle.position.x &&
         circle.position.x - circle.radius + circle.velocity.x <= rectangle.position.x + rectangle.width
     );
+
 }
 
 function animate() {
@@ -379,12 +387,13 @@ function animate() {
                 })
             ) {
                 player.velocity.y = 0
-                break
+
             } else {
                 player.velocity.y = -5
             }
         }
     } else if (keys.a.pressed && lastKey === 'a') {
+
         for (let i = 0; i < boundaries.length; i++) {
             const boundary = boundaries[i]
             if (
@@ -398,6 +407,7 @@ function animate() {
                     rectangle: boundary
                 })
             ) {
+
                 player.velocity.x = 0
                 break
             } else {
@@ -405,6 +415,7 @@ function animate() {
             }
         }
     } else if (keys.s.pressed && lastKey === 's') {
+
         for (let i = 0; i < boundaries.length; i++) {
             const boundary = boundaries[i]
             if (
@@ -424,7 +435,9 @@ function animate() {
                 player.velocity.y = 5
             }
         }
+
     } else if (keys.d.pressed && lastKey === 'd') {
+
         for (let i = 0; i < boundaries.length; i++) {
             const boundary = boundaries[i]
             if (
@@ -432,25 +445,31 @@ function animate() {
                     circle: {
                         ...player, velocity: {
                             x: 5,
+
                             y: 0
+
                         }
                     },
                     rectangle: boundary
                 })
             ) {
+
                 player.velocity.x = 0
                 break
             } else {
+
                 player.velocity.x = 5
             }
         }
     }
+
 
     //win condition
     if (pellets.length === 0) {
         console.log('you win')
         cancelAnimationFrame(animationId)
     }
+
 
 
     //power ups go
@@ -460,11 +479,13 @@ function animate() {
 
         //player collides with power up
         if (
+
             Math.hypot(
                 powerUp.position.x - player.position.x,
                 powerUp.position.y - player.position.y
             ) <
             powerUp.radius + player.radius
+
         ) {
             pellets.splice(i, 1)
 
@@ -480,6 +501,7 @@ function animate() {
 
         }
     }
+
 
 
     //touch pellets
@@ -522,6 +544,7 @@ function animate() {
         2
     else if (player.velocity.y < 0) player.rotation = Math.PI *
         1.5
+
 }
 
 
@@ -546,7 +569,9 @@ addEventListener('keydown', ({ key }) => {
             lastKey = 'd';
             break;
     }
+
 });
+
 
 addEventListener('keyup', ({ key }) => {
     switch (key) {
@@ -567,4 +592,6 @@ addEventListener('keyup', ({ key }) => {
             player.velocity.x = 0;
             break;
     }
+
 });
+
