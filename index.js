@@ -137,11 +137,12 @@ const map = [
     ['|', '.', '.', '.', '.', '.', '.', '.', '.', 'p', '|'],
     ['4', '-', '-', '-', '-', '-', '-', '-', '-', '-', '3']
 ]
-
 function createImage(src) {
-    const image = new Image()
-    image.src = src
-    return image
+    const image = new Image();
+    image.src = src;
+    image.onload = () => console.log(`${src} loaded successfully`);
+    image.onerror = () => console.error(`Failed to load image: ${src}`);
+    return image;
 }
 
 map.forEach((row, i) => {
@@ -568,3 +569,4 @@ addEventListener('keyup', ({ key }) => {
             break;
     }
 });
+
